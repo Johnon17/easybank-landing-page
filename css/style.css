@@ -1,0 +1,168 @@
+/* Variables - These are declared within the root pseudo class */
+:root {
+  --Grayish-Blue: hsl(233, 8%, 62%);
+  --Light-Grayish-Blue: hsl(220, 16%, 96%);
+  --Very-Light-Gray: hsl(0, 0%, 98%);
+  --White: hsl(0, 0%, 100%);
+  --Dark-Blue: hsl(233, 26%, 24%);
+  --Lime-Green: hsl(136, 65%, 51%);
+  --Bright-Cyan: hsl(192, 70%, 51%);
+  --font-small: 1.4rem;
+  /* 14px */
+  --font-med: 1.8rem;
+  /* 18px */
+  --mobile-size: 6.4rem;
+
+
+}
+
+/* Boiler Plate */
+*,
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Public Sans', sans-serif;
+  font-size: var(--font-med);
+}
+
+a {
+  text-decoration: none;
+  color: var(--Grayish-Blue);
+}
+
+li {
+  list-style: none;
+}
+
+/* Layout */
+.flex-container {
+  display: flex;
+}
+
+.flex-jc-c {
+  justify-content: center;
+}
+
+.flex-jc-sb {
+  justify-content: space-between;
+}
+
+.flex-ai-c {
+  align-items: center;
+}
+
+header {}
+
+nav {
+  font-size: var(--font-small);
+  padding: 2rem;
+  line-height: 2rem;
+}
+
+ul>li:not(:last-child) {
+  margin-right: 3rem;
+}
+
+/* Hamburger Menu */
+.header-menu>span {
+  display: block;
+  background: black;
+  width: 26px;
+  height: 2px;
+}
+
+.header-menu>span:not(:last-child) {
+  margin-bottom: 3px;
+}
+
+main {
+  background: var(--Very-Light-Gray);
+}
+
+.features {
+  background: var(--Light-Grayish-Blue);
+}
+
+.button {
+  padding: 10px 20px 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  background: linear-gradient(to right, var(--Lime-Green), var(--Bright-Cyan));
+  color: var(--White);
+  font-weight: 700;
+  opacity: 1;
+  transition: opacity 300ms ease-in-out;
+}
+
+img {
+  width: 14.1rem;
+  height: 2.2rem;
+}
+
+/*Active States*/
+
+/*required to allow for the underline positioning to work*/
+.header-links a {
+  position: relative;
+}
+
+/*Creation of the pseudo element to make the underline - Includes properties so it is opaque until the hover further down */
+.header-links a::after {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 0.3rem;
+  background: linear-gradient(to right, var(--Lime-Green), var(--Bright-Cyan));
+  right: 0;
+  left: 0;
+  bottom: -3.3rem;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+/* change of font colour when hovering */
+ul a:hover {
+  color: var(--Dark-Blue);
+  transition: color 300ms ease-in-out;
+}
+
+/* When you hover on the link, do this to the after pseudo element which comes - makes the underline visible */
+a:hover::after {
+  opacity: 1;
+}
+
+/* by adding the similar opacity and transition properties to the button class - we can use :hover to reduce capacity when hovered on */
+.button:hover {
+  opacity: 0.6;
+}
+
+
+/* Visibility */
+@media (max-width: 40.625rem) {
+  .hide-for-mobile {
+    display: none;
+  }
+}
+
+@media (min-width: 40.625rem) {
+  .hide-for-desktop {
+    display: none;
+  }
+}
